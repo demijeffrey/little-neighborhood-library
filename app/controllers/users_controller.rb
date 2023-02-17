@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     end
 
     def show
-        if logged_in
+        user = User.find_by(id: session[:user_id])
+        if user
             render json: current_user, status: :ok
         else
             render json: {errors: ["No user currently logged in"]}
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password)
+        params.permit(:username, :password, :password_confirmation)
     end
 
 end
