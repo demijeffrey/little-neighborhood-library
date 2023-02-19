@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # resources :reviews
-  # resources :books
+  resources :books, only:[:create, :index]
 
   # get '/hello', to: 'application#hello_world'
 
