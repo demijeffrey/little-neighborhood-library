@@ -1,7 +1,11 @@
+import AddBookForm from "./AddBookForm"
+
 function Books() {
 
     return(
-        <div></div>
+        <div>
+            <AddBookForm />
+        </div>
     )
 
 }
