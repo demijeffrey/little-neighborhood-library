@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 import Home from "./Home";
 import Login from "./Login";
 import Signup from "./Signup";
+import Books from "./Books";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/books" element={<Books />} />
         </Routes>
       </UserProvider>
     </div>

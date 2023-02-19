@@ -40,6 +40,9 @@ function NavBar() {
                     <li className="nav-item">
                         <a className="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/books">Books</a>
+                    </li>
                     <button onClick={logoutUser}>Logout</button>
                 </ul>
             </div>
