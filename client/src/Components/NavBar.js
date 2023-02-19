@@ -1,9 +1,11 @@
 import { useContext } from "react"
 import { UserContext } from "../context/user"
+import { useNavigate } from "react-router-dom"
 
 function NavBar() {
 
-    const {user, logout} = useContext(UserContext)
+    const {user, logout, loggedIn} = useContext(UserContext)
+    const navigate = useNavigate()
 
     function logoutUser() {
         fetch('/logout', {
@@ -11,10 +13,11 @@ function NavBar() {
         })
         .then(() => {
             logout()
+            navigate('/')
         })
     }
 
-    if(!user) {
+    if(!loggedIn) {
         return(
             <div>
                 <ul className="nav justify-content-end">

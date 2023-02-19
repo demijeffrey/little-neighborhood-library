@@ -1,5 +1,6 @@
 import { useState, useContext } from "react"
 import { UserContext } from "../context/user"
+import { useNavigate } from "react-router-dom"
 
 function Login() {
 
@@ -8,6 +9,7 @@ function Login() {
     const [error, setError] = useState('')
 
     const {login} = useContext(UserContext)
+    const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -24,6 +26,7 @@ function Login() {
             login(user)
             setError(user.error)
         })
+        navigate('/')
     }
 
     return(

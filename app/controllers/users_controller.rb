@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         if user
             render json: user, status: :ok
         else
-            render json: {errors: ["No user currently logged in"]}
+            render json: {error: "No user currently logged in"}
         end
     end
 

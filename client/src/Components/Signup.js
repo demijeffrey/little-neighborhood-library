@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react'
 import { UserContext } from '../context/user'
+import { useNavigate } from 'react-router-dom'
 
 function Signup() {
 
@@ -9,6 +10,7 @@ function Signup() {
     const [errors, setErrors] = useState([])
 
     const {signup} = useContext(UserContext)
+    const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -25,6 +27,7 @@ function Signup() {
         .then(user => {
             if(!user.errors) {
                 signup(user)
+                navigate('/')
             } else {
                 const errorList = user.errors.map(error => <li>{error}</li>)
                 setErrors(errorList)
