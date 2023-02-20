@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # resources :reviews
-  resources :books, only:[:create, :index]
+  resources :books, only:[:create, :index, :show]
 
   # get '/hello', to: 'application#hello_world'
 
@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/books', to: 'books#index'
+  # get '/book/:id', to: 'books#show'
   
 end

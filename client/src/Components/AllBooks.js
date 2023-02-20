@@ -2,9 +2,10 @@ import { useState, useEffect } from "react"
 import AddBookForm from "./AddBookForm"
 import BookCard from "./BookCard"
 
-function Books() {
+function AllBooks() {
 
     const [books, setBooks] = useState([])
+    const [newBookForm, setNewBookForm] = useState(false)
 
     useEffect(() => {
         fetch('/books')
@@ -16,13 +17,20 @@ function Books() {
         return <BookCard key={book.id} book={book} />
     })
 
+    function handleClick() {
+        setNewBookForm(!newBookForm)
+    }
+
     return(
         <div>
-            <AddBookForm />
-            {displayBooks}
+            {newBookForm ? <AddBookForm setNewBookForm={setNewBookForm} /> : null}
+            <button onClick={handleClick}>Donate New Book</button>
+            <div className="row">
+                {displayBooks}
+            </div>
         </div>
     )
 
 }
 
-export default Books
+export default AllBooks

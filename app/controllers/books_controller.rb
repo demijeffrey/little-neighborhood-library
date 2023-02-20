@@ -12,6 +12,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
         render json: books
     end
 
+    def show
+        book = Book.find_by(id: params[:id])
+        render json: book
+    end
+
     private
 
     def book_params

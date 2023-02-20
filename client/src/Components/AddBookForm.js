@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function AddBookForm() {
+function AddBookForm({ setNewBookForm }) {
 
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
@@ -22,7 +22,10 @@ function AddBookForm() {
             })
         })
         .then(res => res.json())
-        .then(book => console.log(book))
+        .then(book => {
+            setNewBookForm(false)
+            console.log(book)
+        })
     }
 
     return(
