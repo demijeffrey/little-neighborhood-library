@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/books', to: 'books#index'
-  # get '/book/:id', to: 'books#show'
+  get '/book/:title', to: 'books#show'
   
 end

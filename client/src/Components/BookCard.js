@@ -1,17 +1,17 @@
 import '../App.css';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Book from './Book';
 
 function BookCard({ book }) {
 
     // console.log(book)
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     function reviewClick(book) {
         console.log(book)
 
-        // navigate(`/book/${book.id}`, { state: { book } })
+        navigate(`/book/${book.title}`, { state: { book } })
     }
 
     return(
