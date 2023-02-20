@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # resources :reviews
+  resources :reviews, only: [:create, :index]
   resources :books, only:[:create, :index, :show]
 
   # get '/hello', to: 'application#hello_world'

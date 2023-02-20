@@ -1,6 +1,5 @@
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
-import Book from './Book';
 
 function BookCard({ book }) {
 
@@ -9,7 +8,7 @@ function BookCard({ book }) {
     const navigate = useNavigate()
 
     function reviewClick(book) {
-        console.log(book)
+        // console.log(book)
 
         navigate(`/book/${book.title}`, { state: { book } })
     }

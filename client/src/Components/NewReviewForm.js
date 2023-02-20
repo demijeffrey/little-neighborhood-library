@@ -1,12 +1,32 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { UserContext } from "../context/user"
 
-function NewReviewForm() {
+function NewReviewForm({ book, setNewReviewForFlag }) {
+
+    const { user } = useContext(UserContext)
+
+    console.log(book)
 
     const [comment, setComment] = useState('')
     const [rating, setRating] = useState(null)
 
     function onSubmit(e) {
         e.preventDefault()
+        fetch('/reviews', {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({
+                comment: comment,
+                rating: rating,
+                user_id: user.id,
+                book_id: book.id
+            })
+        })
+        .then(res => res.json())
+        .then(review => {
+            setNewReviewForFlag(false)
+            console.log(review)
+        })
     }
 
     return(

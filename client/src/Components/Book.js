@@ -28,7 +28,7 @@ function Book() {
             <h5>Summary:</h5><p>{book.description}</p>
             <button onClick={handleNewClick}>Leave a Review</button>
             <br />
-            {newReviewFormFlag ? <NewReviewForm /> : null}
+            {newReviewFormFlag ? <NewReviewForm book={book} setNewReviewForFlag={setNewReviewForFlag} /> : null}
         </div>
     )
 
