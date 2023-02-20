@@ -6,6 +6,7 @@ function AddBookForm() {
     const [author, setAuthor] = useState('')
     const [genre, setGenre] = useState('')
     const [description, setDescription] = useState('')
+    const [imageUrl, setImageUrl] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -16,7 +17,8 @@ function AddBookForm() {
                 title: title,
                 author: author,
                 genre: genre,
-                description: description
+                description: description,
+                image_url: imageUrl
             })
         })
         .then(res => res.json())
@@ -40,6 +42,10 @@ function AddBookForm() {
             <div className="mb-3">
                 <label className="form-label">Description</label>
                 <textarea className="form-control" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+            </div>
+            <div className="mb-3">
+                <label className="form-label">Image URL</label>
+                <input type="text" className="form-control" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
             </div>
             <button type="submit">Submit</button>
         </form>

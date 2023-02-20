@@ -15,7 +15,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     private
 
     def book_params
-        params.permit(:title, :author, :genre, :description)
+        params.permit(:title, :author, :genre, :description, :image_url)
     end
 
     def record_invalid(invalid)
