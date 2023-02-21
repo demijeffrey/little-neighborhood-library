@@ -2,7 +2,7 @@ import { useState, useContext } from "react"
 import { UserContext } from "../context/user"
 import EditReviewForm from "./EditReviewForm"
 
-function ReviewCard({ review, updateReviews }) {
+function ReviewCard({ review, updateReviews, deleteReview }) {
 
     const user = useContext(UserContext)
 
@@ -12,8 +12,11 @@ function ReviewCard({ review, updateReviews }) {
 
     function handleDelete() {
         fetch('/reviews', {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: { 'Content-Type' : 'application/json'},
+            body: JSON.stringify({id: review.id})
         })
+        deleteReview(review.id)
     }
 
     function handleEdit(editedReview) {

@@ -27,7 +27,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     end
 
     def destroy
-        book = Book.find_by(title: params[:book_title])
         review = Review.find(params[:id])
         review.destroy
     end

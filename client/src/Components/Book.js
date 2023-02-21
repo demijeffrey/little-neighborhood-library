@@ -32,8 +32,13 @@ function Book() {
         setBookReviews(newList)
     }
 
+    function deleteReview(id) {
+        const filteredList = bookReviews.filter(review => review.id !== id)
+        setBookReviews(filteredList)
+    }
+
     const displayReviews = bookReviews.map(review => {
-        return <ReviewCard key={review.id} review={review} updateReviews={updateReviews} />
+        return <ReviewCard key={review.id} review={review} updateReviews={updateReviews} deleteReview={deleteReview} />
     })
 
     return(
