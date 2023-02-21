@@ -11,11 +11,11 @@ function Book() {
     const [newReviewFormFlag, setNewReviewForFlag] = useState(false)
     const [bookReviews, setBookReviews] = useState(book.reviews)
 
-    console.log(book.reviews)
+    console.log(bookReviews)
 
     function handleNewClick() {
         setNewReviewForFlag(!newReviewFormFlag)
-        console.log('clicked')
+        // console.log('clicked')
     }
 
     // function addNewReview(review) {
@@ -40,7 +40,7 @@ function Book() {
             <h5>Reviews</h5>{displayReviews}
             <button onClick={handleNewClick}>Leave a Review</button>
             <br />
-            {newReviewFormFlag ? <NewReviewForm book={book} setNewReviewForFlag={setNewReviewForFlag} /> : null}
+            {newReviewFormFlag ? <NewReviewForm book={book} setBookReviews={setBookReviews} setNewReviewForFlag={setNewReviewForFlag} /> : null}
         </div>
     )
 

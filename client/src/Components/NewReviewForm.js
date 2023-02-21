@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"
 import { UserContext } from "../context/user"
 
-function NewReviewForm({ book, setNewReviewForFlag , addNewReview }) {
+function NewReviewForm({ book, setNewReviewForFlag, addNewReview, setBookReviews }) {
 
     const { user } = useContext(UserContext)
 
@@ -25,7 +25,7 @@ function NewReviewForm({ book, setNewReviewForFlag , addNewReview }) {
         .then(res => res.json())
         .then(review => {
             setNewReviewForFlag(false)
-            // addNewReview(review)
+            // setBookReviews(review)
             console.log(review)
         })
     }

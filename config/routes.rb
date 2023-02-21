@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :reviews, only: [:create, :index]
+  resources :reviews, only: [:create, :index, :destroy]
   resources :books, only:[:create, :index, :show]
 
   get '/current-user', to: 'users#show'
@@ -11,5 +11,7 @@ Rails.application.routes.draw do
 
   get '/books', to: 'books#index'
   get '/book/:title', to: 'books#show'
+
+  delete '/reviews', to: 'reviews#destroy'
   
 end

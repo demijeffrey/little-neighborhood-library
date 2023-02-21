@@ -3,16 +3,23 @@ class ReviewsController < ApplicationController
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def create
-        # book = Book.find(params[:book_id])
-        # review = book.reviews.create!(review_params)
-        # review.user = current_user
-        review = Review.create!(review_params)
+        book = Book.find(params[:book_id])
+        review = book.reviews.create!(review_params)
+        review.user = current_user
+        # byebug
+        # review = Review.create!(review_params)
         render json: review, status: :created
     end
 
     def index
         reviews = Review.all
         render json: reviews
+    end
+
+    def destroy
+        byebug
+        review = Review.find(params[:id])
+        review.destroy
     end
 
     private
