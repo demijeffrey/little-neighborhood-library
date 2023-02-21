@@ -17,6 +17,13 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     end
 
     def update
+        review = Review.find(params[:id])
+        if review
+            review.update(review_params)
+            render json: review
+        else
+            render json: {error: "Review not found"}, status: :not_found
+        end
     end
 
     def destroy
@@ -28,7 +35,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     private
 
     def review_params
-        params.require(:review).permit(:comment, :rating, :user_id, :book_id)
+        params.require(:review).permit(:id, :comment, :rating, :user_id, :book_id)
     end
 
     def record_invalid(invalid)

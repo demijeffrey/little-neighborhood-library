@@ -21,8 +21,19 @@ function Book() {
         setBookReviews([...bookReviews, review])
     }
 
+    function updateReviews(editedReview) {
+        const newList = bookReviews.map(review => {
+            if(review.id === editedReview.id) {
+                return editedReview
+            } else {
+                return review
+            }
+        })
+        setBookReviews(newList)
+    }
+
     const displayReviews = bookReviews.map(review => {
-        return <ReviewCard key={review.id} review={review} />
+        return <ReviewCard key={review.id} review={review} updateReviews={updateReviews} />
     })
 
     return(

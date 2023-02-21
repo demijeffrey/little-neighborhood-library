@@ -2,7 +2,7 @@ import { useState, useContext } from "react"
 import { UserContext } from "../context/user"
 import EditReviewForm from "./EditReviewForm"
 
-function ReviewCard({ review }) {
+function ReviewCard({ review, updateReviews }) {
 
     const user = useContext(UserContext)
 
@@ -16,20 +16,21 @@ function ReviewCard({ review }) {
         })
     }
 
-    function handleEdit() {
+    function handleEdit(editedReview) {
         setEditFormFlag(!editFormFlag)
+        updateReviews(editedReview)
     }
 
     if(review.user.id === user.user.id){
         return(
             <div>
-                {editFormFlag ? <EditReviewForm review={review} /> : null}
+                {editFormFlag ? <EditReviewForm review={review} handleEdit={handleEdit} /> : null}
                 <div className="card">
                     <div className="card-body">
                         <p>{review.comment}</p>
                         <li>{review.user.username}</li>
                         <button className="btn btn-primary" onClick={handleDelete}>Delete</button>
-                        <button className="btn btn-primary" onClick={handleEdit}>Edit</button>
+                        <button className="btn btn-primary" onClick={() => setEditFormFlag(!editFormFlag)}>Edit</button>
                     </div>
                 </div>
             </div>
