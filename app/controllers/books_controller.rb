@@ -17,10 +17,20 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
         render json: book
     end
 
+    def update
+        book = Book.find(params[:id])
+        if book
+            book.update(book_params)
+            render json: book
+        else
+            render json: {error: "Not found"}, status: :not_found
+        end
+    end
+
     private
 
     def book_params
-        params.permit(:title, :author, :genre, :description, :image_url)
+        params.permit(:title, :author, :genre, :description, :image_url, :available)
     end
 
     def record_invalid(invalid)

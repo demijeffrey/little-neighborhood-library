@@ -17,8 +17,19 @@ function AllBooks() {
         setBooks([...books, newBook])
     }
 
+    function updateBooks(updatedBook){
+        const newBookList = books.map(book => {
+            if(book.id === updatedBook.id) {
+                return updatedBook
+            } else {
+                return book
+            }
+        })
+        setBooks(newBookList)
+    }
+
     const displayBooks= books.map(book => {
-        return <BookCard key={book.id} book={book} />
+        return <BookCard key={book.id} book={book} updateBooks={updateBooks} />
     })
 
     function handleClick() {

@@ -18,7 +18,8 @@ function AddBookForm({ setNewBookForm, addNewBook }) {
                 author: author,
                 genre: genre,
                 description: description,
-                image_url: imageUrl
+                image_url: imageUrl,
+                available: true
             })
         })
         .then(res => res.json())
