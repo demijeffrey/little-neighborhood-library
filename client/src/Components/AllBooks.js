@@ -13,6 +13,10 @@ function AllBooks() {
         .then(books => setBooks(books))
     }, [])
 
+    function addNewBook(newBook) {
+        setBooks([...books, newBook])
+    }
+
     const displayBooks= books.map(book => {
         return <BookCard key={book.id} book={book} />
     })
@@ -23,7 +27,7 @@ function AllBooks() {
 
     return(
         <div>
-            {newBookForm ? <AddBookForm setNewBookForm={setNewBookForm} /> : null}
+            {newBookForm ? <AddBookForm setNewBookForm={setNewBookForm} addNewBook={addNewBook} /> : null}
             <button onClick={handleClick}>Donate New Book</button>
             <div className="row">
                 {displayBooks}

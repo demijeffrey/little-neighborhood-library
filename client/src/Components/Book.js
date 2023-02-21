@@ -11,7 +11,7 @@ function Book() {
     const [newReviewFormFlag, setNewReviewForFlag] = useState(false)
     const [bookReviews, setBookReviews] = useState(book.reviews)
 
-    console.log(book.reviews)
+    // console.log(book.reviews)
 
     function handleNewClick() {
         setNewReviewForFlag(!newReviewFormFlag)
