@@ -16,8 +16,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
         render json: reviews
     end
 
+    def update
+    end
+
     def destroy
-        byebug
+        book = Book.find_by(title: params[:book_title])
         review = Review.find(params[:id])
         review.destroy
     end

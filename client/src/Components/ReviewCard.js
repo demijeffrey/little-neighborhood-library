@@ -5,14 +5,15 @@ function ReviewCard({ review }) {
 
     const user = useContext(UserContext)
     
-    console.log(review)
+    // console.log(review)
 
     function handleDelete() {
         fetch('/reviews', {
             method: 'DELETE'
         })
-        // console.log(review)
     }
+
+    function handleEdit() {}
 
     if(review.user.id === user.user.id){
         return(
@@ -21,8 +22,8 @@ function ReviewCard({ review }) {
                     <div className="card-body">
                         <p>{review.comment}</p>
                         <li>{review.user.username}</li>
-                        <button className="btn btn-primary" onClick={() => handleDelete(review)}>Delete</button>
-                        <button className="btn btn-primary">Edit</button>
+                        <button className="btn btn-primary" onClick={handleDelete}>Delete</button>
+                        <button className="btn btn-primary" onClick={handleEdit}>Edit</button>
                     </div>
                 </div>
             </div>
