@@ -1,9 +1,12 @@
-import { useContext } from "react"
+import { useState, useContext } from "react"
 import { UserContext } from "../context/user"
+import EditReviewForm from "./EditReviewForm"
 
 function ReviewCard({ review }) {
 
     const user = useContext(UserContext)
+
+    const [editFormFlag, setEditFormFlag] = useState(false)
     
     // console.log(review)
 
@@ -13,11 +16,14 @@ function ReviewCard({ review }) {
         })
     }
 
-    function handleEdit() {}
+    function handleEdit() {
+        setEditFormFlag(!editFormFlag)
+    }
 
     if(review.user.id === user.user.id){
         return(
             <div>
+                {editFormFlag ? <EditReviewForm review={review} /> : null}
                 <div className="card">
                     <div className="card-body">
                         <p>{review.comment}</p>
