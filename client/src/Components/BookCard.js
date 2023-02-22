@@ -37,7 +37,7 @@ function BookCard({ book, updateBooks }) {
                 {/* <p className="card-text">{book.description}</p> */}
                 <button href="#" className="btn btn-secondary" onClick={() => moreInfoClick(book)}>More Info</button>
                 <br />
-                {book.available ? <button onClick={() => returnBook()}>Borrow</button> : <button onClick={() => returnBook()}>Return</button>}
+                {book.available ? <button className="btn btn-outline-success btn-sm" onClick={() => returnBook()}>Borrow</button> : <button className="btn btn-outline-danger btn-sm" onClick={() => returnBook()}>Return</button>}
             </div>
         </div>
     )

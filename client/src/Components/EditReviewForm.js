@@ -23,7 +23,7 @@ function EditReviewForm({ review, handleEdit }) {
     }
 
     return(
-        <form className="container" onSubmit={(e) => handleSubmit(e)}>
+        <form className="container card w-50" onSubmit={(e) => handleSubmit(e)}>
             <div className="mb-3">
                 <label className="form-label">Comment</label>
                 <textarea type="text" className="form-control" value={editedComment} onChange={(e) => setEditedComment(e.target.value)} />

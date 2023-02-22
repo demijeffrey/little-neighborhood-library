@@ -40,3 +40,9 @@
 .card-style {
   width: 18rem
 }
+
+.edit-form{
+  background-color:#282c34;
+  color: white;
+  size: 18px;
+}

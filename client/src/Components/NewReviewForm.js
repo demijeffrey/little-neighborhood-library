@@ -1,3 +1,4 @@
+import '../App.css';
 import { useState, useContext } from "react"
 import { UserContext } from "../context/user"
 
@@ -31,7 +32,7 @@ function NewReviewForm({ book, setNewReviewForFlag, addNewReview }) {
     }
 
     return(
-        <form className="container" onSubmit={(e) => onSubmit(e)}>
+        <form className="container-sm form-control-sm edit-form" onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
                 <label className="form-label">Comment</label>
                 <textarea type="text" className="form-control" value={comment} onChange={(e) => setComment(e.target.value)} />

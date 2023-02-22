@@ -10,7 +10,7 @@ function AllBooks() {
     useEffect(() => {
         fetch('/books')
         .then(res => res.json())
-        .then(books => setBooks(books))
+        .then(books => setBooks(books.sort((a, b) => (a.title > b.title) ? 1 : -1)))
     }, [])
 
     function addNewBook(newBook) {
@@ -39,7 +39,7 @@ function AllBooks() {
     return(
         <div>
             {newBookForm ? <AddBookForm setNewBookForm={setNewBookForm} addNewBook={addNewBook} /> : null}
-            <button onClick={handleClick}>Donate New Book</button>
+            <button className="btn btn-success" onClick={handleClick}>Donate New Book</button>
             <div className="row">
                 {displayBooks}
             </div>
