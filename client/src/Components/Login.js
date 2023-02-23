@@ -1,6 +1,7 @@
 import { useState, useContext } from "react"
 import { UserContext } from "../context/user"
 import { useNavigate } from "react-router-dom"
+import '../App.css';
 
 function Login() {
 
@@ -30,7 +31,7 @@ function Login() {
     }
 
     return(
-        <div>
+        <div className="login-form">
             <form className="container" onSubmit={(e) => handleSubmit(e)}>
                 <div className="row mb-3">
                     <label className="col-sm-2 col-form-label">Username</label>
