@@ -1,13 +1,12 @@
 class ReviewsController < ApplicationController
 
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def create
         book = Book.find(params[:book_id])
         review = book.reviews.create!(review_params)
         review.user = current_user
-        # byebug
-        # review = Review.create!(review_params)
         render json: review, status: :created
     end
 
@@ -18,12 +17,8 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def update
         review = Review.find(params[:id])
-        if review
-            review.update(review_params)
-            render json: review
-        else
-            render json: {error: "Review not found"}, status: :not_found
-        end
+        review.update!(review_params)
+        render json: review
     end
 
     def destroy
@@ -39,6 +34,10 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def record_invalid(invalid)
         render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
+
+    def record_not_found
+        render json: {error: "review not found"}, status: :not_found
     end
 
 end

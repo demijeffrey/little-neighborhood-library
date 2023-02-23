@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def create
         book = Book.create!(book_params)
@@ -19,12 +20,8 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def update
         book = Book.find(params[:id])
-        if book
-            book.update(book_params)
-            render json: book
-        else
-            render json: {error: "Not found"}, status: :not_found
-        end
+        book.update!(book_params)
+        render json: book
     end
 
     private
@@ -35,6 +32,10 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def record_invalid(invalid)
         render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
+
+    def record_not_found
+        render json: {error: "book not found"}, status: :not_found
     end
 
 end
