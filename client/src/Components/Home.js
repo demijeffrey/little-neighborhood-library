@@ -19,7 +19,7 @@ function Home() {
         return(
             <div>
                 <h2>Welcome {user.username}!</h2>
-                <h5 className="my-books">Your Reviewed Books:</h5>
+                <h5 className="my-books">Books You've Reviewed:</h5>
                 <div className="row">
                     {user.books.map(book => {
                         return <BookCard key={book.id} book={book} />
