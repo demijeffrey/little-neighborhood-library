@@ -10,8 +10,6 @@ function BookCard({ book }) {
     const navigate = useNavigate()
 
     function moreInfoClick(book) {
-        // console.log(book)
-
         navigate(`/book/${book.title}`, { state: { book } })
     }
 
@@ -38,7 +36,6 @@ function BookCard({ book }) {
                 <h6>By: {book.author}</h6>
                 <p>{book.genre}</p>
                 {book.available ? <p>Available</p> : <p>Not Available</p>}
-                {/* <p className="card-text">{book.description}</p> */}
                 <button href="#" className="btn btn-secondary" onClick={() => moreInfoClick(book)}>More Info</button>
                 <br />
                 {book.available ? <button className="btn btn-outline-success btn-sm" onClick={() => checkingBook()}>Borrow</button> : <button className="btn btn-outline-danger btn-sm" onClick={() => checkingBook()}>Return</button>}

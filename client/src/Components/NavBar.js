@@ -5,7 +5,7 @@ import '../App.css';
 
 function NavBar() {
 
-    const {user, logout, loggedIn} = useContext(UserContext)
+    const { logout, loggedIn } = useContext(UserContext)
     const navigate = useNavigate()
 
     function logoutUser() {
@@ -41,7 +41,7 @@ function NavBar() {
                 <h3>Little Neighborhood Library</h3>
                 <ul className="nav justify-content-end">
                     <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="/">Home</a>
+                        <a className="nav-link active" aria-current="page" href="/">My Home</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/books">Books</a>
@@ -55,20 +55,3 @@ function NavBar() {
 }
 
 export default NavBar
-
-
-// return(
-//     <div>
-//         <ul className="nav justify-content-end">
-//             <li className="nav-item">
-//                 <a className="nav-link active" aria-current="page" href="/">Home</a>
-//             </li>
-//             <li className="nav-item">
-//                 <a className="nav-link" href="/signup">Signup</a>
-//             </li>
-//             <li className="nav-item">
-//                 <a className="nav-link" href="/login">Login</a>
-//             </li>
-//         </ul>
-//     </div>
-// )

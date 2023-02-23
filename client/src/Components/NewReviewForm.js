@@ -6,8 +6,6 @@ function NewReviewForm({ book, setNewReviewForFlag, addNewReview }) {
 
     const { user } = useContext(UserContext)
 
-    // console.log(book)
-
     const [comment, setComment] = useState('')
     const [rating, setRating] = useState(null)
 

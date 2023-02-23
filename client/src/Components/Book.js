@@ -2,19 +2,14 @@ import { useState, useContext } from "react"
 import { useLocation } from "react-router-dom"
 import NewReviewForm from "./NewReviewForm"
 import ReviewCard from "./ReviewCard"
-import { UserContext } from "../context/user"
 
 function Book() {
-
-    const user = useContext(UserContext)
 
     const { state } = useLocation()
     const { book } = state
 
     const [newReviewFormFlag, setNewReviewForFlag] = useState(false)
     const [bookReviews, setBookReviews] = useState(book.reviews)
-
-    console.log(book.reviews)
 
     function handleNewClick() {
         setNewReviewForFlag(!newReviewFormFlag)

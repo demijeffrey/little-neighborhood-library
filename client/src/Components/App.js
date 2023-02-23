@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { UserProvider } from "../context/user"
 import NavBar from "./NavBar";

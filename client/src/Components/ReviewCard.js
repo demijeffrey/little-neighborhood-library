@@ -7,8 +7,6 @@ function ReviewCard({ review, updateReviews, deleteReview }) {
     const user = useContext(UserContext)
 
     const [editFormFlag, setEditFormFlag] = useState(false)
-    
-    console.log(review)
 
     function handleDelete() {
         fetch('/reviews', {
@@ -50,18 +48,6 @@ function ReviewCard({ review, updateReviews, deleteReview }) {
             </div>
         )
     }
-
-    // return(
-    //     <div>
-    //         <div className="card">
-    //             <div className="card-body">
-    //                 <p>{review.comment}</p>
-    //                 <li>{review.user}</li>
-    //                 <button className="btn btn-primary">Delete</button>
-    //             </div>
-    //         </div>
-    //     </div>
-    // )
 
 }
 
