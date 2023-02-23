@@ -1,40 +1,44 @@
-import { useState, useEffect } from "react"
+import { useContext } from "react"
+import { BookContext } from "../context/book"
 import AddBookForm from "./AddBookForm"
 import BookCard from "./BookCard"
 
 function AllBooks() {
 
-    const [books, setBooks] = useState([])
-    const [newBookForm, setNewBookForm] = useState(false)
+    const { books, handleClick, addNewBook, newBookForm, setNewBookForm } = useContext(BookContext)
+    // console.log(books)
 
-    useEffect(() => {
-        fetch('/books')
-        .then(res => res.json())
-        .then(books => setBooks(books.sort((a, b) => (a.title > b.title) ? 1 : -1)))
-    }, [])
+    // const [books, setBooks] = useState([])
+    // const [newBookForm, setNewBookForm] = useState(false)
 
-    function addNewBook(newBook) {
-        setBooks([...books, newBook])
-    }
+    // useEffect(() => {
+    //     fetch('/books')
+    //     .then(res => res.json())
+    //     .then(books => setBooks(books.sort((a, b) => (a.title > b.title) ? 1 : -1)))
+    // }, [])
 
-    function updateBooks(updatedBook){
-        const newBookList = books.map(book => {
-            if(book.id === updatedBook.id) {
-                return updatedBook
-            } else {
-                return book
-            }
-        })
-        setBooks(newBookList)
-    }
+    // function addNewBook(newBook) {
+    //     setBooks([...books, newBook])
+    // }
+
+    // function updateBooks(updatedBook){
+    //     const newBookList = books.map(book => {
+    //         if(book.id === updatedBook.id) {
+    //             return updatedBook
+    //         } else {
+    //             return book
+    //         }
+    //     })
+    //     setBooks(newBookList)
+    // }
 
     const displayBooks= books.map(book => {
-        return <BookCard key={book.id} book={book} updateBooks={updateBooks} />
+        return <BookCard key={book.id} book={book} />
     })
 
-    function handleClick() {
-        setNewBookForm(!newBookForm)
-    }
+    // function handleClick() {
+    //     setNewBookForm(!newBookForm)
+    // }
 
     return(
         <div>

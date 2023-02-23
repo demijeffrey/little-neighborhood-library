@@ -1,7 +1,11 @@
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { BookContext } from '../context/book';
 
-function BookCard({ book, updateBooks }) {
+function BookCard({ book }) {
+
+    const { updateBooks } = useContext(BookContext)
 
     const navigate = useNavigate()
 
@@ -11,7 +15,7 @@ function BookCard({ book, updateBooks }) {
         navigate(`/book/${book.title}`, { state: { book } })
     }
 
-    function returnBook() {
+    function checkingBook() {
         fetch('/books', {
             method: 'PATCH',
             headers: { 'Content-Type' : 'application/json' },
@@ -37,7 +41,7 @@ function BookCard({ book, updateBooks }) {
                 {/* <p className="card-text">{book.description}</p> */}
                 <button href="#" className="btn btn-secondary" onClick={() => moreInfoClick(book)}>More Info</button>
                 <br />
-                {book.available ? <button className="btn btn-outline-success btn-sm" onClick={() => returnBook()}>Borrow</button> : <button className="btn btn-outline-danger btn-sm" onClick={() => returnBook()}>Return</button>}
+                {book.available ? <button className="btn btn-outline-success btn-sm" onClick={() => checkingBook()}>Borrow</button> : <button className="btn btn-outline-danger btn-sm" onClick={() => checkingBook()}>Return</button>}
             </div>
         </div>
     )

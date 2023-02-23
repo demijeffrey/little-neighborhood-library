@@ -8,7 +8,7 @@ function ReviewCard({ review, updateReviews, deleteReview }) {
 
     const [editFormFlag, setEditFormFlag] = useState(false)
     
-    // console.log(review)
+    console.log(review)
 
     function handleDelete() {
         fetch('/reviews', {
