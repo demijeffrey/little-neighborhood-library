@@ -56,7 +56,7 @@ function Book() {
             <h5>Summary:</h5><p>{book.description}</p>
             <br />
             <h5>Reviews</h5>{displayReviews}
-            <button onClick={handleNewClick}>Leave a Review</button>
+            <button className="btn btn-warning" onClick={handleNewClick}>Leave a Review</button>
             <br />
             {newReviewFormFlag ? <NewReviewForm book={book} addNewReview={addNewReview} setNewReviewForFlag={setNewReviewForFlag} /> : null}
         </div>

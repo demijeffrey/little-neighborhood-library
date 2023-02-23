@@ -50,3 +50,17 @@
 .my-books{
   margin-top: 50px;
 }
+
+.all-books {
+  margin-top: 50px;
+}
+
+.donate-btn {
+  margin-top: 10px;
+}
+
+.title {
+  background-color: #282c34;
+  color: beige;
+  /* margin-bottom: 20px; */
+}

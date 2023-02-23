@@ -48,7 +48,7 @@ function EditReviewForm({ review, handleEdit }) {
                 <input className="form-check-input" type="radio" name="ratingRadios" value="5" onChange={(e) => setEditedRating(e.target.value)} />
                 <label className="form-check-label">5</label>
             </div>
-            <button type="submit">Submit</button>
+            <button className="btn btn-info btn-sm" type="submit">Save</button>
         </form>
     )
 

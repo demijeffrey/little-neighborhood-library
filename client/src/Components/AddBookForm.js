@@ -31,7 +31,7 @@ function AddBookForm({ setNewBookForm, addNewBook }) {
     }
 
     return(
-        <form className="container" onSubmit={(e) => handleSubmit(e)}>
+        <form className="container-sm form-control" onSubmit={(e) => handleSubmit(e)}>
             <div className="mb-3">
                 <label className="form-label">Title</label>
                 <input type="text" className="form-control" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -52,7 +52,7 @@ function AddBookForm({ setNewBookForm, addNewBook }) {
                 <label className="form-label">Image URL</label>
                 <input type="text" className="form-control" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
             </div>
-            <button type="submit">Submit</button>
+            <button className="btn btn-info" type="submit">Submit</button>
         </form>
     )
 

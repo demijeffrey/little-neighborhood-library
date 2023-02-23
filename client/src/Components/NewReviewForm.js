@@ -57,7 +57,7 @@ function NewReviewForm({ book, setNewReviewForFlag, addNewReview }) {
                 <input className="form-check-input" type="radio" name="exampleRadios" value="5" onChange={(e) => setRating(e.target.value)} />
                 <label className="form-check-label">5</label>
             </div>
-            <button type="submit">Submit</button>
+            <button className="btn btn-info btn-sm" type="submit">Submit</button>
         </form>
     )
 

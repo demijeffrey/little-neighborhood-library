@@ -19,7 +19,14 @@ function Home() {
 
 
     if (!loggedIn) {
-        return(<h3>Sign Up or Login</h3>)
+        return(
+            <div>
+                <h1></h1>
+                <h3>Sign Up or Login</h3>
+                <h5>to view the contents of your local neighborhood library!</h5>
+                <img src="https://www.discovernepa.com/wp-content/uploads/2020/09/DN-HERO-LittleFreeLibrary-01-1152x648.jpg" alt="little library" />
+            </div>
+        )
     } else {
         return(
             <div>

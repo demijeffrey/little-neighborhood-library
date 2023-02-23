@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { UserContext } from "../context/user"
 import { useNavigate } from "react-router-dom"
+import '../App.css';
 
 function NavBar() {
 
@@ -19,8 +20,9 @@ function NavBar() {
 
     if(!loggedIn) {
         return(
-            <div>
-                <ul className="nav justify-content-end">
+            <div className="title" data-bs-theme="dark">
+                <h3>Little Neighborhood Library</h3>
+                <ul className="nav justify-content-end bg-dark">
                     <li className="nav-item">
                         <a className="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
@@ -35,7 +37,8 @@ function NavBar() {
         )
     } else {
         return(
-            <div>
+            <div className="title" data-bs-theme="dark">
+                <h3>Little Neighborhood Library</h3>
                 <ul className="nav justify-content-end">
                     <li className="nav-item">
                         <a className="nav-link active" aria-current="page" href="/">Home</a>
