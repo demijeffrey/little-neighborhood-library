@@ -6,12 +6,14 @@ function UserProvider({ children }) {
 
     const [user, setUser] = useState({})
     const [loggedIn, setLoggedIn] = useState(false)
+    const [userBooks, setUserBooks] = useState([])
 
     useEffect(() => {
         fetch('/current-user')
         .then(res => res.json())
         .then(currentUser => {
             setUser(currentUser)
+            setUserBooks(currentUser.books)
             currentUser.error ? setLoggedIn(false) : setLoggedIn(true)
         })
     }, [])
@@ -32,7 +34,7 @@ function UserProvider({ children }) {
     }
 
     return(
-        <UserContext.Provider value={{user, signup, login, logout, loggedIn}}>
+        <UserContext.Provider value={{user, signup, login, logout, loggedIn, userBooks}}>
             {children}
         </UserContext.Provider>
     )

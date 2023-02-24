@@ -1,10 +1,13 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { UserContext } from "../context/user"
 import BookCard from "./BookCard"
+import UserBookCard from "./UserBookCard"
 
 function Home() {
     
     const { user, loggedIn } = useContext(UserContext)
+
+    // setUserBooks(user.books)
 
     if (!loggedIn) {
         return(
@@ -22,7 +25,7 @@ function Home() {
                 <h5 className="my-books">Books You've Reviewed:</h5>
                 <div className="row">
                     {user.books.map(book => {
-                        return <BookCard key={book.id} book={book} />
+                        return <UserBookCard key={book.id} book={book} />
                     })}
 
                 </div>

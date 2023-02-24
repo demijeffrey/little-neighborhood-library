@@ -52,3 +52,12 @@
   position: absolute;
   left: 0;
 }
+
+.user-book {
+  /* width: 18rem; */
+  max-width: 540px;
+}
+
+.user-book-review {
+  margin-top: 20px;
+}
