@@ -1,12 +1,18 @@
 import { useState, useContext } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import NewReviewForm from "./NewReviewForm"
 import ReviewCard from "./ReviewCard"
+import { BookContext } from "../context/book"
+import '../App.css';
 
 function Book() {
 
     const { state } = useLocation()
     const { book } = state
+
+    const navigate = useNavigate()
+
+    const { removeBook } = useContext(BookContext)
 
     const [newReviewFormFlag, setNewReviewForFlag] = useState(false)
     const [bookReviews, setBookReviews] = useState(book.reviews)
@@ -30,6 +36,18 @@ function Book() {
         setBookReviews(newList)
     }
 
+    function retireClick() {
+        if (window.confirm('Are you sure you want to retire this book permanently?')) {
+            fetch('/books', {
+                method: 'DELETE',
+                headers: { 'Content-Type' : 'application/json'},
+                body: JSON.stringify({id: book.id})
+            })
+            removeBook(book)
+            navigate('/books')
+        }
+    }
+
     function deleteReview(id) {
         const filteredList = bookReviews.filter(review => review.id !== id)
         setBookReviews(filteredList)
@@ -41,19 +59,23 @@ function Book() {
 
     return(
         <div>
-            <h2>{book.title}</h2>
-            <img src={book.image_url} />
+            <button className="btn btn-outline-warning retire-btn" onClick={() => retireClick()}>Retire Book Permanently</button>
             <br />
-            <h5>Author:</h5><p>{book.author}</p>
-            <br />
-            <h5>Genre:</h5><p>{book.genre}</p>
-            <br />
-            <h5>Summary:</h5><p>{book.description}</p>
-            <br />
-            <h5>Reviews</h5>{displayReviews}
-            <button className="btn btn-warning" onClick={handleNewClick}>Leave a Review</button>
-            <br />
-            {newReviewFormFlag ? <NewReviewForm book={book} addNewReview={addNewReview} setNewReviewForFlag={setNewReviewForFlag} /> : null}
+            <div>
+                <h2>{book.title}</h2>
+                <img src={book.image_url} />
+                <br />
+                <h5>Author:</h5><p>{book.author}</p>
+                <br />
+                <h5>Genre:</h5><p>{book.genre}</p>
+                <br />
+                <h5>Summary:</h5><p>{book.description}</p>
+                <br />
+                <h5>Reviews</h5>{displayReviews}
+                <button className="btn btn-warning" onClick={handleNewClick}>Leave a Review</button>
+                <br />
+                {newReviewFormFlag ? <NewReviewForm book={book} addNewReview={addNewReview} setNewReviewForFlag={setNewReviewForFlag} /> : null}
+            </div>
         </div>
     )
 

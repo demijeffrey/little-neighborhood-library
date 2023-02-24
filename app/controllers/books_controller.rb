@@ -24,6 +24,11 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
         render json: book
     end
 
+    def destroy
+        book = Book.find(params[:id])
+        book.destroy
+    end
+
     private
 
     def book_params

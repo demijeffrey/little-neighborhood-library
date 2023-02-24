@@ -32,8 +32,13 @@ function BookProvider({ children }) {
         setBooks(newBookList)
     }
 
+    function removeBook(book) {
+        const newBookList = books.filter(b => book.id !== b.id)
+        setBooks(newBookList)
+    }
+
     return(
-        <BookContext.Provider value={{books, handleClick, addNewBook, newBookForm, setNewBookForm, updateBooks}}>
+        <BookContext.Provider value={{books, handleClick, addNewBook, newBookForm, setNewBookForm, updateBooks, removeBook}}>
             {children}
         </BookContext.Provider>
     )

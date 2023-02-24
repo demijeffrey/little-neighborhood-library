@@ -24,25 +24,25 @@ function ReviewCard({ review, updateReviews, deleteReview }) {
 
     if(review.user.id === user.user.id){
         return(
-            <div className="card w-50">
+            <div className="card w-50 container">
                 {editFormFlag ? <EditReviewForm review={review} handleEdit={handleEdit} /> : null}
                 <div className="card">
                     <div className="card-body">
-                        <p>{review.comment}</p>{review.rating}⭐
-                        <ul>-{review.user.username}</ul>
-                        <button className="btn btn-primary btn-sm" onClick={handleDelete}>Delete</button>
-                        <button className="btn btn-primary btn-sm" onClick={() => setEditFormFlag(!editFormFlag)}>Edit</button>
+                        <p>{review.comment}</p><p>{review.rating}⭐</p>
+                        <h6>-{review.user.username}</h6>
+                        <button className="btn btn-outline-danger btn-sm" onClick={handleDelete}>Delete</button>
+                        <button className="btn btn-outline-primary btn-sm" onClick={() => setEditFormFlag(!editFormFlag)}>Edit</button>
                     </div>
                 </div>
             </div>
         )
     } else {
         return(
-            <div className="card w-50">
+            <div className="card w-50 container">
                 <div className="card">
                     <div className="card-body">
-                        <p>{review.comment}</p>{review.rating}⭐
-                        <ul>-{review.user.username}</ul>
+                        <p>{review.comment}</p><p>{review.rating}⭐</p>
+                        <h6>-{review.user.username}</h6>
                     </div>
                 </div>
             </div>

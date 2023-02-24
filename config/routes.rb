@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/books', to: 'books#index'
   get '/book/:title', to: 'books#show'
   patch '/books', to: 'books#update'
+  delete '/books', to: 'books#destroy'
 
   delete '/reviews', to: 'reviews#destroy'
   patch '/reviews', to: 'reviews#update'
