@@ -14,8 +14,6 @@ function UserBookCard({ book }) {
         }
     }))
 
-    // console.log(book.reviews)
-
     function editReview() {
         setEditFormFlag(!editFormFlag)
     }
@@ -24,16 +22,7 @@ function UserBookCard({ book }) {
         setEditFormFlag(!editFormFlag)
         setUserReview(editedReview)
     }
-
-    // function handleDelete() {
-    //     fetch('/reviews', {
-    //         method: 'DELETE',
-    //         headers: { 'Content-Type' : 'application/json'},
-    //         body: JSON.stringify({id: userReview.id})
-    //     })
-    //     setUserReview({})
-    // }
-
+    
     return(
         <div>
             <div className="card mb-3 user-book">

@@ -6,15 +6,4 @@ class ApplicationController < ActionController::API
     User.find_by(id: session[:user_id])
   end
 
-  # def logged_in
-  #   !!session[:user_id]
-  # end
-
 end
-
-
-
-    # def hello_world
-    #     session[:count] = (session[:count] || 0) + 1
-    #     render json: { count: session[:count] }
-    #   end
