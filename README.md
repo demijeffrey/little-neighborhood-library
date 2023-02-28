@@ -1,24 +1,66 @@
-# README
+# Local Little Neighborhood Library
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Local Little Neighborhood Library keeps track of the books in a single little library. A logged in user has the ability to keep track of the books they have read and left reviews for, edit and delete their own reviews, donate new books and "retire" old ones, and mark a book to show whether it is currently available or not.
 
-Things you may want to cover:
 
-* Ruby version
+## Constructed With
 
-* System dependencies
+This app was designed using:
+* React
+* Ruby/Rails
+* Postgresql
+* ActiveRecord
+* JSX, HTML, CSS
+* Bootstrap
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+## Installation and Requirements
 
-* How to run the test suite
+* Fork and clone this repo
 
-* Services (job queues, cache servers, search engines, etc.)
+* Have all gems and dependencies installed
 
-* Deployment instructions
+* If you don't already have the Ruby gems installed for the backend, run the following:
+```console
+$ bundle install
+```
 
-* ...
+* For the frontend dependencies, run the following:
+```console
+$ npm install --prefix client
+```
+
+* Make sure to have Postgresql installed and running as the database. 
+
+    * For WSL:
+```console
+$ sudo apt update
+$ sudo apt install postgresql postgresql-contrib libpq-dev
+$ sudo service postgresql start
+```
+
+   * For OSX:
+```console
+$ brew install postgresql
+$ brew services start postgresql
+```
+
+
+
+## Starting The Servers and Opening the App
+
+* To open the app in the browser and start up the frontend server:
+```console
+$ npm start --prefix client
+```
+* In a new terminal, start the server for the backend:
+```console
+$ rails s
+```
+
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

@@ -1,13 +1,10 @@
 import { useContext, useState } from "react"
 import { UserContext } from "../context/user"
-import BookCard from "./BookCard"
 import UserBookCard from "./UserBookCard"
 
 function Home() {
     
     const { user, loggedIn } = useContext(UserContext)
-
-    // setUserBooks(user.books)
 
     if (!loggedIn) {
         return(
