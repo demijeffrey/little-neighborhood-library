@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :reviews, only: [:create, :index, :destroy, :update]
-  resources :books, only:[:create, :index, :show]
+  # resources :reviews, only: [:create, :index, :destroy, :update]
+  resources :books
 
   get '/current-user', to: 'users#show'
   post '/signup', to: 'users#create'
@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/books', to: 'books#index'
-  get '/book/:title', to: 'books#show'
-  patch '/books', to: 'books#update'
-  delete '/books', to: 'books#destroy'
+  # get '/books', to: 'books#index'
+  # get '/book/:title', to: 'books#show'
+  # patch '/books', to: 'books#update'
+  # delete '/books', to: 'books#destroy'
 
   delete '/reviews', to: 'reviews#destroy'
   patch '/reviews', to: 'reviews#update'

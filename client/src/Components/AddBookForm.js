@@ -7,6 +7,7 @@ function AddBookForm({ setNewBookForm, addNewBook }) {
     const [genre, setGenre] = useState('')
     const [description, setDescription] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+    const [errors, setErrors] = useState([])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -24,14 +25,20 @@ function AddBookForm({ setNewBookForm, addNewBook }) {
         })
         .then(res => res.json())
         .then(newBook => {
-            setNewBookForm(false)
-            addNewBook(newBook)
-            console.log(newBook)
+            if (newBook.errors) {
+                setErrors(newBook.errors)
+            } else {
+                setNewBookForm(false)
+                addNewBook(newBook)
+            }
         })
     }
 
+    const displayErrors = errors.map(e => <li key={e}>{e}</li>)
+
     return(
         <form className="container-sm form-control" onSubmit={(e) => handleSubmit(e)}>
+            {displayErrors}
             <div className="mb-3">
                 <label className="form-label">Title</label>
                 <input type="text" className="form-control" value={title} onChange={(e) => setTitle(e.target.value)} />
