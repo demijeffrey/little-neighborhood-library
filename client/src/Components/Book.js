@@ -38,10 +38,8 @@ function Book() {
 
     function retireClick() {
         if (window.confirm('Are you sure you want to retire this book permanently?')) {
-            fetch('/books', {
-                method: 'DELETE',
-                headers: { 'Content-Type' : 'application/json'},
-                body: JSON.stringify({id: book.id})
+            fetch(`/books/${book.id}`, {
+                method: 'DELETE'
             })
             removeBook(book)
             navigate('/books')

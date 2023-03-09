@@ -14,11 +14,10 @@ function BookCard({ book }) {
     }
 
     function checkingBook() {
-        fetch('/books', {
+        fetch(`/books/${book.id}`, {
             method: 'PATCH',
             headers: { 'Content-Type' : 'application/json' },
             body: JSON.stringify({
-                id: book.id,
                 available: !book.available
             })
         })
@@ -36,7 +35,7 @@ function BookCard({ book }) {
                 <h6>By: {book.author}</h6>
                 <p>{book.genre}</p>
                 {book.available ? <p>Available</p> : <p>Not Available</p>}
-                <button href="#" className="btn btn-secondary" onClick={() => moreInfoClick(book)}>More Info</button>
+                <button className="btn btn-secondary" onClick={() => moreInfoClick(book)}>More Info</button>
                 <br />
                 {book.available ? <button className="btn btn-outline-success btn-sm" onClick={() => checkingBook()}>Borrow</button> : <button className="btn btn-outline-danger btn-sm" onClick={() => checkingBook()}>Return</button>}
             </div>

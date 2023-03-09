@@ -10,6 +10,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def index
         books = Book.all
+        # byebug
         render json: books
     end
 

@@ -12,8 +12,8 @@ function App() {
 
   return (
     <div className="App">
-      <UserProvider>
-        <BookProvider>
+      {/* <UserProvider> */}
+        {/* <BookProvider> */}
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -22,8 +22,8 @@ function App() {
             <Route path="/books" element={<AllBooks />} />
             <Route path="/book/:title" element={<Book />} />
           </Routes>
-        </BookProvider>
-      </UserProvider>
+        {/* </BookProvider> */}
+      {/* </UserProvider> */}
     </div>
   );
 }

@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   
-  patch '/books', to: 'books#update'
-  delete '/books', to: 'books#destroy'
+  patch '/books/:id', to: 'books#update'
+  delete '/books/:id', to: 'books#destroy'
 
   delete '/reviews', to: 'reviews#destroy'
   patch '/reviews', to: 'reviews#update'

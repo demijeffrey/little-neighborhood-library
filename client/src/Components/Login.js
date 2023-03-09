@@ -22,12 +22,16 @@ function Login() {
                 password: password
             })
         })
-        .then(res => res.json())
-        .then(user => {
-            login(user)
-            setError(user.error)
+        .then(res => {
+            if(res.ok){
+                res.json().then(user => {
+                    login(user)
+                    navigate('/')
+                })
+            } else {
+                res.json().then(user => setError(user.error))
+            }
         })
-        navigate('/')
     }
 
     return(
