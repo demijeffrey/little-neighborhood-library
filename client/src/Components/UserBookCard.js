@@ -36,12 +36,10 @@ function UserBookCard({ book }) {
                             <h5 className="card-title">{book.title}</h5>
                             <h6>By: {book.author}</h6>
                             <p className='user-book-review'>My Review:</p>
-                            {/* {displayReview} */}
                             <p className='card-text'>{userReview.comment}</p>
                             <h6>{userReview.rating}⭐</h6>
                         </div>
                         <button className='btn btn-outline-info' onClick={() => editReview()}>Edit Review</button>
-                        {/* <button className="btn btn-outline-danger" onClick={handleDelete}>Delete</button> */}
                     </div>
                 </div>
             </div>
@@ -51,5 +49,3 @@ function UserBookCard({ book }) {
 }
 
 export default UserBookCard
-
-// style="max-width: 540px;"

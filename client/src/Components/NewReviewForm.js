@@ -25,7 +25,6 @@ function NewReviewForm({ book, setNewReviewForFlag, addNewReview }) {
         .then(review => {
             setNewReviewForFlag(false)
             addNewReview(review)
-            console.log(review)
         })
     }
 
