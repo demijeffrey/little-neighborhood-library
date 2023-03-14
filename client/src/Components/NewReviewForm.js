@@ -17,7 +17,7 @@ function NewReviewForm({ book, setNewReviewForFlag, addNewReview }) {
             body: JSON.stringify({
                 comment: comment,
                 rating: rating,
-                user_id: user.id,
+                // user_id: user.id,
                 book_id: book.id
             })
         })

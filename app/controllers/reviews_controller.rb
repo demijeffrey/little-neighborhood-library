@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
+before_action :authorize
+
     def create
         book = Book.find(params[:book_id])
         review = book.reviews.create!(review_params)

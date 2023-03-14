@@ -3,6 +3,8 @@ class BooksController < ApplicationController
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
+before_action :authorize
+
     def create
         book = Book.create!(book_params)
         render json: book, status: :created
