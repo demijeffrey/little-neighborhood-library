@@ -17,6 +17,7 @@ function UserProvider({ children }) {
             currentUser.error ? setLoggedIn(false) : setLoggedIn(true)
         })
     }, [])
+    console.log(user.reviews)
 
     const signup = (user) => {
         setUser(user)

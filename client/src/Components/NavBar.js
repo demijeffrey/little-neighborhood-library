@@ -18,40 +18,6 @@ function NavBar() {
         })
     }
 
-    // if(!loggedIn) {
-    //     return(
-    //         <div className="title" data-bs-theme="dark">
-    //             <h3>Little Neighborhood Library</h3>
-    //             <ul className="nav justify-content-end bg-dark">
-    //                 <li className="nav-item">
-    //                     <a className="nav-link active" aria-current="page" href="/">Home</a>
-    //                 </li>
-    //                 <li className="nav-item">
-    //                     <a className="nav-link" href="/signup">Signup</a>
-    //                 </li>
-    //                 <li className="nav-item">
-    //                     <a className="nav-link" href="/login">Login</a>
-    //                 </li>
-    //             </ul>
-    //         </div>
-    //     )
-    // } else {
-    //     return(
-    //         <div className="title" data-bs-theme="dark">
-    //             <h3>Little Neighborhood Library</h3>
-    //             <ul className="nav justify-content-end">
-    //                 <li className="nav-item">
-    //                     <a className="nav-link active" aria-current="page" href="/">My Home</a>
-    //                 </li>
-    //                 <li className="nav-item">
-    //                     <a className="nav-link" href="/books">Books</a>
-    //                 </li>
-    //                 <button onClick={logoutUser}>Logout</button>
-    //             </ul>
-    //         </div>
-    //     )
-    // }
-
     if(!loggedIn) {
         return(
             <div className="title" data-bs-theme="dark">

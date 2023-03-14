@@ -6,9 +6,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 before_action :authorize
 
     def create
-        book = Book.find(params[:book_id])
-        review = book.reviews.create!(review_params)
-        review.user = current_user
+        review = current_user.reviews.create!(review_params)
         render json: review, status: :created
     end
 
@@ -18,20 +16,20 @@ before_action :authorize
     end
 
     def update
-        review = Review.find(params[:id])
+        review = current_user.reviews.find(params[:id])
         review.update!(review_params)
         render json: review
     end
 
     def destroy
-        review = Review.find(params[:id])
+        review = current_user.reviews.find(params[:id])
         review.destroy
     end
 
     private
 
     def review_params
-        params.require(:review).permit(:id, :comment, :rating, :user_id, :book_id)
+        params.require(:review).permit(:id, :comment, :rating, :book_id)
     end
 
     def record_invalid(invalid)

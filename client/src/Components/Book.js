@@ -4,6 +4,7 @@ import NewReviewForm from "./NewReviewForm"
 import ReviewCard from "./ReviewCard"
 import { BookContext } from "../context/book"
 import '../App.css';
+import { UserContext } from "../context/user"
 
 function Book() {
 
@@ -13,6 +14,7 @@ function Book() {
     const navigate = useNavigate()
 
     const { removeBook } = useContext(BookContext)
+    const { addUserReview } = useContext(UserContext)
 
     const [newReviewFormFlag, setNewReviewForFlag] = useState(false)
     const [bookReviews, setBookReviews] = useState(book.reviews)
@@ -23,6 +25,7 @@ function Book() {
 
     function addNewReview(review) {
         setBookReviews([...bookReviews, review])
+        addUserReview(review)
     }
 
     function updateReviews(editedReview) {

@@ -6,15 +6,8 @@ function BookProvider({ children }) {
 
     const [books, setBooks] = useState([])
     const [newBookForm, setNewBookForm] = useState(false)
-    // const [fetchedFlag, setFetchedFlag] = useState(false)
 
     useEffect(() => {
-        // if (!fetchedFlag){
-        //     fetch('/books')
-        //     .then(res => res.json())
-        //     .then(books => setBooks(books.sort((a, b) => (a.title > b.title) ? 1 : -1)))
-        //     .then(setFetchedFlag(true))
-        // }
         fetch('/books')
         .then(res => res.json())
         .then(books => setBooks(books.sort((a, b) => (a.title > b.title) ? 1 : -1)))

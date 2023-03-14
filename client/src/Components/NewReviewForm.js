@@ -1,10 +1,7 @@
 import '../App.css';
-import { useState, useContext } from "react"
-import { UserContext } from "../context/user"
+import { useState } from "react"
 
 function NewReviewForm({ book, setNewReviewForFlag, addNewReview }) {
-
-    const { user } = useContext(UserContext)
 
     const [comment, setComment] = useState('')
     const [rating, setRating] = useState(null)
@@ -17,7 +14,6 @@ function NewReviewForm({ book, setNewReviewForFlag, addNewReview }) {
             body: JSON.stringify({
                 comment: comment,
                 rating: rating,
-                // user_id: user.id,
                 book_id: book.id
             })
         })
