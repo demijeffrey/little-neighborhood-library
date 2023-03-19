@@ -29,16 +29,6 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
         book.destroy
     end
 
-    def top
-        n = params[:n]
-        books = Book.joins(:reviews)
-            .select('books.id, books.title, books.author, COUNT(reviews.id) as review_count')
-            .group(:id)
-            .order("review_count DESC")
-            .limit(n)
-        render json: books.as_json(except: [:genre, :description])
-    end
-
     private
 
     def book_params

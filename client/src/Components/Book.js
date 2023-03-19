@@ -46,7 +46,7 @@ function Book() {
         setBooks(books.map(b => {
             if(b.id === book.id){
                 book.reviews = updatedReviewList
-                console.log(book.reviews)
+                // console.log(book.reviews)
                 return book
             } else {
                 return b
