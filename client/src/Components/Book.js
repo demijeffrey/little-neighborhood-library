@@ -13,30 +13,45 @@ function Book() {
 
     const navigate = useNavigate()
 
-    const { removeBook } = useContext(BookContext)
-    const { addUserReview } = useContext(UserContext)
+    const { removeBook, books, setBooks } = useContext(BookContext)
+    const {updateUserReviews} = useContext(UserContext)
 
     const [newReviewFormFlag, setNewReviewForFlag] = useState(false)
-    const [bookReviews, setBookReviews] = useState(book.reviews)
 
     function handleNewClick() {
         setNewReviewForFlag(!newReviewFormFlag)
     }
 
     function addNewReview(review) {
-        setBookReviews([...bookReviews, review])
-        addUserReview(review)
+        const newBooks = books.map(b => {
+            if(b.id === book.id) {
+                book.reviews.push(review)
+                return book
+            } else {
+                return b
+            }
+        })
+        setBooks(newBooks)
     }
 
     function updateReviews(editedReview) {
-        const newList = bookReviews.map(review => {
+        const updatedReviewList = book.reviews.map(review => {
             if(review.id === editedReview.id) {
                 return editedReview
             } else {
                 return review
             }
         })
-        setBookReviews(newList)
+        updateUserReviews(editedReview)
+        setBooks(books.map(b => {
+            if(b.id === book.id){
+                book.reviews = updatedReviewList
+                console.log(book.reviews)
+                return book
+            } else {
+                return b
+            }
+        }))
     }
 
     function retireClick() {
@@ -50,11 +65,18 @@ function Book() {
     }
 
     function deleteReview(id) {
-        const filteredList = bookReviews.filter(review => review.id !== id)
-        setBookReviews(filteredList)
+        const filteredList = book.reviews.filter(review => review.id !== id)
+        setBooks(books.map(b => {
+            if(b.id === book.id){
+                book.reviews = filteredList
+                return book
+            } else {
+                return b
+            }
+        }))
     }
 
-    const displayReviews = bookReviews.map(review => {
+    const displayReviews = book.reviews.map(review => {
         return <ReviewCard key={review.id} review={review} updateReviews={updateReviews} deleteReview={deleteReview} />
     })
 

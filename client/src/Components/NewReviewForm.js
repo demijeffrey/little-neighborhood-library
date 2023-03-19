@@ -1,10 +1,13 @@
 import '../App.css';
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { UserContext } from '../context/user';
 
 function NewReviewForm({ book, setNewReviewForFlag, addNewReview }) {
 
     const [comment, setComment] = useState('')
     const [rating, setRating] = useState(null)
+
+    const {addUserReview} = useContext(UserContext)
 
     function onSubmit(e) {
         e.preventDefault()
@@ -21,6 +24,7 @@ function NewReviewForm({ book, setNewReviewForFlag, addNewReview }) {
         .then(review => {
             setNewReviewForFlag(false)
             addNewReview(review)
+            addUserReview(review)
         })
     }
 

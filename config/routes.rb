@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   delete '/reviews', to: 'reviews#destroy'
   patch '/reviews', to: 'reviews#update'
+
+  get '/top-books/:n', to: 'books#top'
   
 end

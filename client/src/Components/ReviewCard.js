@@ -4,7 +4,7 @@ import EditReviewForm from "./EditReviewForm"
 
 function ReviewCard({ review, updateReviews, deleteReview }) {
 
-    const user = useContext(UserContext)
+    const { user, removeUserReview } = useContext(UserContext)
 
     const [editFormFlag, setEditFormFlag] = useState(false)
 
@@ -15,6 +15,7 @@ function ReviewCard({ review, updateReviews, deleteReview }) {
             body: JSON.stringify({id: review.id})
         })
         deleteReview(review.id)
+        removeUserReview(review.id)
     }
 
     function handleEdit(editedReview) {
@@ -22,7 +23,7 @@ function ReviewCard({ review, updateReviews, deleteReview }) {
         updateReviews(editedReview)
     }
 
-    if(review.user.id === user.user.id){
+    if(review.user.id === user.id){
         return(
             <div className="card w-50 container">
                 {editFormFlag ? <EditReviewForm review={review} handleEdit={handleEdit} /> : null}

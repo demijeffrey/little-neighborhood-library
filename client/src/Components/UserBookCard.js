@@ -2,14 +2,17 @@ import '../App.css';
 import { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
 import EditReviewForm from './EditReviewForm';
+import { BookContext } from '../context/book';
 
 function UserBookCard({ book }) {
 
-    const user = useContext(UserContext)
+    const {user, updateUserReviews} = useContext(UserContext)
+
+    const {setBook} = useContext(BookContext)
 
     const [editFormFlag, setEditFormFlag] = useState(false)
     const [userReview, setUserReview] = useState(book.reviews.find(review => {
-        if(review.user_id === user.user.id){
+        if(review.user_id === user.id){
             return review
         }
     }))
@@ -21,6 +24,8 @@ function UserBookCard({ book }) {
     function handleEdit(editedReview) {
         setEditFormFlag(!editFormFlag)
         setUserReview(editedReview)
+        updateUserReviews(editedReview)
+        setBook(book)
     }
     
     return(

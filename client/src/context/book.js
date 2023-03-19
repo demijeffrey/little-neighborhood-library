@@ -6,12 +6,14 @@ function BookProvider({ children }) {
 
     const [books, setBooks] = useState([])
     const [newBookForm, setNewBookForm] = useState(false)
+    const [book, setBook] = useState(null)
 
     useEffect(() => {
         fetch('/books')
         .then(res => res.json())
         .then(books => setBooks(books.sort((a, b) => (a.title > b.title) ? 1 : -1)))
-    }, [])
+    }, [book])
+    // console.log(books)
 
     const handleClick = () => {
         setNewBookForm(!newBookForm)
@@ -38,7 +40,7 @@ function BookProvider({ children }) {
     }
 
     return(
-        <BookContext.Provider value={{books, handleClick, addNewBook, newBookForm, setNewBookForm, updateBooks, removeBook}}>
+        <BookContext.Provider value={{books, handleClick, addNewBook, newBookForm, setNewBookForm, updateBooks, removeBook, setBooks, setBook}}>
             {children}
         </BookContext.Provider>
     )

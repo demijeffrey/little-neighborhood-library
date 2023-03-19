@@ -3,8 +3,6 @@ class BooksController < ApplicationController
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-# before_action :authorize
-
     def create
         book = Book.create!(book_params)
         render json: book, status: :created
@@ -29,6 +27,16 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     def destroy
         book = Book.find(params[:id])
         book.destroy
+    end
+
+    def top
+        n = params[:n]
+        books = Book.joins(:reviews)
+            .select('books.id, books.title, books.author, COUNT(reviews.id) as review_count')
+            .group(:id)
+            .order("review_count DESC")
+            .limit(n)
+        render json: books.as_json(except: [:genre, :description])
     end
 
     private

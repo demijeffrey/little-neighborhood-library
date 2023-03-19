@@ -6,18 +6,37 @@ function UserProvider({ children }) {
 
     const [user, setUser] = useState({})
     const [loggedIn, setLoggedIn] = useState(false)
-    const [userBooks, setUserBooks] = useState([])
+    const [userReviews, setUserReviews] = useState(null)
 
     useEffect(() => {
         fetch('/current-user')
         .then(res => res.json())
         .then(currentUser => {
             setUser(currentUser)
-            setUserBooks(currentUser.books)
             currentUser.error ? setLoggedIn(false) : setLoggedIn(true)
         })
-    }, [])
-    console.log(user.reviews)
+    }, [userReviews])
+    // console.log(user.reviews)
+
+    const addUserReview = (review) => {
+        setUserReviews([user.reviews, review])
+    }
+
+    const removeUserReview = (id) => {
+        const newList = user.reviews.filter(r => r.id !== id)
+        setUserReviews(newList)
+    }
+
+    const updateUserReviews = (review) => {
+        const newList = user.reviews.map(r => {
+            if(r.id === review.id) {
+                return review
+            } else {
+                return r
+            }
+        })
+        setUserReviews(newList)
+    }
 
     const signup = (user) => {
         setUser(user)
@@ -35,7 +54,7 @@ function UserProvider({ children }) {
     }
 
     return(
-        <UserContext.Provider value={{user, signup, login, logout, loggedIn, userBooks}}>
+        <UserContext.Provider value={{user, signup, login, logout, loggedIn, addUserReview, removeUserReview, updateUserReviews}}>
             {children}
         </UserContext.Provider>
     )
